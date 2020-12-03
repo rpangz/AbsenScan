@@ -32,6 +32,10 @@
             position: fixed;
             top: -100px;
         }
+
+        #lbl-check-focus {
+            text-align: right;
+        }
     </style>
 
     <link rel="icon" href="../assets/img/logo.png">
@@ -97,7 +101,14 @@
                     <!-- buka panel -->
                     <div class="panel panel-success">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Informasi : </h3>
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <h3 class="panel-title">Informasi : </h3>
+                                </div>
+                                <div class="col-md-5" align="right" id="lblCheckFocus">
+                                    <span class="label label-primary">Checking . . .</span>
+                                </div>
+                            </div>
                         </div>
                         <div class="panel-body text-center">
                             <div class="row">
@@ -253,12 +264,7 @@
                 --------------------------------------------------------------->
 
             </div>
-
         </div>
-
-
-
-
     </div>
 
     <!-- Audio -->
@@ -280,8 +286,24 @@
     <script type="text/javascript" src="assets/js/qrcodelib.js"></script>
     <script type="text/javascript" src="assets/js/webcodecamjquery.js"></script>
     <script type="text/javascript">
+        const key_el = document.querySelector("#key_id");
+        const key_length = 32;
+        key_el.focus();
+        const body_key = document.querySelector("body");
+        body_key.addEventListener("click", async function() {
+            key_el.focus();
+        });
         const rootfolder = "eca";
         let scanstatus = false;
+
+        setInterval(() => {
+            if ($('#key_id').is(":focus")) {
+                $('#lblCheckFocus').html('<span class="label label-primary">Qrcode Scanner : Enabled</span>');
+            } else {
+                $('#lblCheckFocus').html('<span class="label label-danger">Qrcode Scanner : Disabled</span>');
+            }
+            // fire this step
+        }, 2000);
 
         var arg = {
             resultFunction: function(result) {
@@ -365,11 +387,7 @@
 
         // New FETCH
 
-        const key_el = document.querySelector("#key_id");
-        const key_length = 32;
 
-
-        key_el.focus();
         key_el.addEventListener("keyup", async function() {
             const key_id = key_el.value;
             console.log(key_id.length);

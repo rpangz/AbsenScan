@@ -16,7 +16,7 @@ class Main extends MY_Controller
 		$gedung = $this->session->userdata('gedung');
 		$data['gedung'] = $this->cms_table_data($table_name = 'list_lokasi_header', $where_column = 'id_gedung', $result_column = 'nama_gedung', $gedung);
 		$data['gedung_alamat'] = $this->cms_table_data($table_name = 'list_lokasi_header', $where_column = 'id_gedung', $result_column = 'alamat_gedung', $gedung);
-		$data['judul'] = "Astel Group";
+		$data['judul'] = "Absen Scan Ver 2.0";
 		$this->load->view('main', $data);
 	}
 
