@@ -263,8 +263,8 @@
 
     <!-- Audio -->
     <audio id="myAudioTrue">
-        <source src="assets/audio/tryagain_male.oga" type="audio/ogg">
-        <source src="assets/audio/tryagain_male.mp3" type="audio/mpeg">
+        <source src="assets/audio/thankyou_female.oga" type="audio/ogg">
+        <source src="assets/audio/thankyou_female.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
 
